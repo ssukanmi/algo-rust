@@ -1,13 +1,10 @@
 // 0 (nlongn) time | O(1) space
 pub fn sorted_squared_array1(array: Vec<i32>) -> Vec<i32> {
-    let mut new_arr = array.into_iter()
-        .map(|x| x * x)
-        .collect::<Vec<i32>>();
+    let mut new_arr = array.into_iter().map(|x| x * x).collect::<Vec<i32>>();
 
     new_arr.sort();
     new_arr
 }
-
 
 // if array has been initially sorted
 // O(n) time | O(n) space
@@ -24,7 +21,6 @@ pub fn sorted_squared_array2(array: Vec<i32>) -> Vec<i32> {
             left_idx += 1;
         } else {
             new_arr[arr_idx] = right_val * right_val;
-            println!("right_idx: {}", right_idx);
             right_idx -= 1;
         }
     }
@@ -41,6 +37,5 @@ mod tests {
     }
 
     #[test]
-    fn test_sorted_squared_array2() {
-    }
+    fn test_sorted_squared_array2() {}
 }

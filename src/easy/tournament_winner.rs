@@ -16,7 +16,7 @@ pub fn tournament_winner(competitions: Vec<Vec<String>>, results: Vec<i32>) -> S
         } else {
             away_team
         };
-        update_points(winning_team, WINNING_POINTS,  &mut teams_points);
+        update_points(winning_team, WINNING_POINTS, &mut teams_points);
 
         if teams_points[winning_team] > teams_points[&winner] {
             winner = winning_team.clone();
@@ -25,8 +25,8 @@ pub fn tournament_winner(competitions: Vec<Vec<String>>, results: Vec<i32>) -> S
     winner.to_string()
 }
 
-fn update_points(team: &String, points: i32, teams_points:  &mut HashMap<String, i32>) {
-    *teams_points.entry(team.clone()).or_insert(0) += points;
+fn update_points(team: &String, points: i32, teams_points: &mut HashMap<String, i32>) {
+    *teams_points.entry(team.clone()).or_insert(i32::default()) += points;
 }
 
 #[cfg(test)]

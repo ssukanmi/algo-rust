@@ -1,10 +1,12 @@
 pub fn is_palindrome1(string: &str) -> bool {
-    // let new = string.chars().rev().collect::<String>();
-    // string == new
     string.chars().eq(string.chars().rev())
 }
 
 pub fn is_palindrome2(string: &str) -> bool {
+    if string.is_empty(){
+        return true;
+    }
+
     let mut left = 0;
     let mut right = string.len() - 1;
     while left < right {
@@ -17,7 +19,6 @@ pub fn is_palindrome2(string: &str) -> bool {
     true
 }
 
-
 pub fn is_palindrome3(string: &str) -> bool {
     let i = 0;
     is_palindrome3_helper(string, i)
@@ -28,7 +29,8 @@ fn is_palindrome3_helper(string: &str, i: isize) -> bool {
     if i >= j {
         return true;
     }
-    string.chars().nth(i.try_into().unwrap()) == string.chars().nth(j.try_into().unwrap()) && is_palindrome3_helper(string, i+1)
+    string.chars().nth(i as usize) == string.chars().nth(j as usize)
+        && is_palindrome3_helper(string, i + 1)
 }
 
 #[cfg(test)]
